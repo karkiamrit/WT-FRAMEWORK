@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Login</title>
+    <style>
+      .form-container {
+        width: 300px;
+        height: 400px;
+        margin: auto;
+        padding: 0px 20px;
+        padding-top: 40px;
+        box-shadow: 1px 1px 10px 0px black;
+        margin-top: 40px;
+      }
+
+      .form-container .header {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .form-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .form-container input[type="submit"]:hover {
+        background-color: rgb(130, 11, 11);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1 class="header">Login</h1>
+      <form action="login.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" />
+        <br />
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" />
+        <br />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  </body>
+</html>
