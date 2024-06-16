@@ -221,6 +221,23 @@ export class UserControllerBase {
     }
   }
 
+  @common.Post("/users")
+  @swagger.ApiOkResponse({
+    type: UserUpdateInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async CreateUserRest(
+    @common.Body()
+    body: UserCreateInput
+  ): Promise<UserUpdateInput> {
+    return this.service.CreateUserRest(body);
+  }
+
   @common.Get("/:id/login")
   @swagger.ApiOkResponse({
     type: String,
