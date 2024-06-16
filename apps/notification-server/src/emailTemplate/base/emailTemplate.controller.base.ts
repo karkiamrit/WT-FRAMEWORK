@@ -141,6 +141,23 @@ export class EmailTemplateControllerBase {
     }
   }
 
+  @common.Post("/email-templates")
+  @swagger.ApiOkResponse({
+    type: EmailTemplateUpdateInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async CreateEmailTemplateRest(
+    @common.Body()
+    body: string
+  ): Promise<EmailTemplateUpdateInput> {
+    return this.service.CreateEmailTemplateRest(body);
+  }
+
   @common.Post("/notify-email")
   @swagger.ApiOkResponse({
     type: EmailTemplate,
