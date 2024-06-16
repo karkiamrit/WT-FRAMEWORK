@@ -1,0 +1,16 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model EmailTemplate {
+  createdAt   DateTime @default(now())
+  htmlContent String?
+  id          String   @id @default(cuid())
+  textContent String?
+  updatedAt   DateTime @updatedAt
+}
