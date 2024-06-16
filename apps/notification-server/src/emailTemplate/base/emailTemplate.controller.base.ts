@@ -158,6 +158,23 @@ export class EmailTemplateControllerBase {
     return this.service.EmailNotify(body);
   }
 
+  @common.Post("/create-email-template")
+  @swagger.ApiOkResponse({
+    type: EmailTemplateWhereUniqueInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async RestCreateEmailTemplate(
+    @common.Body()
+    body: string
+  ): Promise<EmailTemplateWhereUniqueInput> {
+    return this.service.RestCreateEmailTemplate(body);
+  }
+
   @common.Post("/send-mail")
   @swagger.ApiOkResponse({
     type: EmailTemplate,

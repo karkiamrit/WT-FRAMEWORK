@@ -12,6 +12,8 @@ https://docs.amplication.com/how-to/custom-code
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, EmailTemplate as PrismaEmailTemplate } from "@prisma/client";
 import { EmailTemplate } from "./EmailTemplate";
+import { EmailTemplateCreateInput } from "./EmailTemplateCreateInput";
+import { EmailTemplateWhereUniqueInput } from "./EmailTemplateWhereUniqueInput";
 
 export class EmailTemplateServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -50,6 +52,11 @@ export class EmailTemplateServiceBase {
     return this.prisma.emailTemplate.delete(args);
   }
   async EmailNotify(args: EmailTemplate): Promise<EmailTemplate> {
+    throw new Error("Not implemented");
+  }
+  async RestCreateEmailTemplate(
+    args: EmailTemplateCreateInput
+  ): Promise<EmailTemplateWhereUniqueInput> {
     throw new Error("Not implemented");
   }
   async SendEmailNotification(args: EmailTemplate): Promise<EmailTemplate> {
