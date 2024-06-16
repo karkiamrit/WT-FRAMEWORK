@@ -73,6 +73,9 @@ export class UserServiceBase {
   async Login(args: string): Promise<string> {
     throw new Error("Not implemented");
   }
+  async SignIn(args: UserCreateInput): Promise<UserCreateInput> {
+    throw new Error("Not implemented");
+  }
   async UserLogin(args: UserCreateInput): Promise<UserCreateInput> {
     throw new Error("Not implemented");
   }

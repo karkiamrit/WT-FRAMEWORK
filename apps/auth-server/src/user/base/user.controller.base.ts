@@ -237,6 +237,23 @@ export class UserControllerBase {
     return this.service.Login(body);
   }
 
+  @common.Post("/sign-in")
+  @swagger.ApiOkResponse({
+    type: UserCreateInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async SignIn(
+    @common.Body()
+    body: UserCreateInput
+  ): Promise<UserCreateInput> {
+    return this.service.SignIn(body);
+  }
+
   @common.Post("/user-login")
   @swagger.ApiOkResponse({
     type: UserCreateInput,

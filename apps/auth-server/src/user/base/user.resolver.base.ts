@@ -142,6 +142,14 @@ export class UserResolverBase {
   }
 
   @graphql.Mutation(() => UserCreateInput)
+  async SignIn(
+    @graphql.Args()
+    args: UserCreateInput
+  ): Promise<UserCreateInput> {
+    return this.service.SignIn(args);
+  }
+
+  @graphql.Mutation(() => UserCreateInput)
   async UserLogin(
     @graphql.Args()
     args: UserCreateInput
