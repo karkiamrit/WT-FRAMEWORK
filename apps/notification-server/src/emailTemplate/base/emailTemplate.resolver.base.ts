@@ -21,6 +21,7 @@ import { CreateEmailTemplateArgs } from "./CreateEmailTemplateArgs";
 import { UpdateEmailTemplateArgs } from "./UpdateEmailTemplateArgs";
 import { DeleteEmailTemplateArgs } from "./DeleteEmailTemplateArgs";
 import { EmailTemplateCreateInput } from "./EmailTemplateCreateInput";
+import { EmailTemplateUpdateInput } from "./EmailTemplateUpdateInput";
 import { EmailTemplateWhereUniqueInput } from "./EmailTemplateWhereUniqueInput";
 import { EmailTemplateService } from "../emailTemplate.service";
 @graphql.Resolver(() => EmailTemplate)
@@ -97,6 +98,14 @@ export class EmailTemplateResolverBase {
       }
       throw error;
     }
+  }
+
+  @graphql.Mutation(() => EmailTemplateUpdateInput)
+  async CreateEmailTemplateRest(
+    @graphql.Args()
+    args: EmailTemplateCreateInput
+  ): Promise<EmailTemplateUpdateInput> {
+    return this.service.CreateEmailTemplateRest(args);
   }
 
   @graphql.Mutation(() => EmailTemplate)
