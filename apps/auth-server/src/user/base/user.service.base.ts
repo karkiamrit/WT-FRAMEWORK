@@ -13,9 +13,10 @@ import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, User as PrismaUser } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
+import { UserCreateInput } from "./UserCreateInput";
+import { UserUpdateInput } from "./UserUpdateInput";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserOrderByInput } from "./UserOrderByInput";
-import { UserCreateInput } from "./UserCreateInput";
 
 export class UserServiceBase {
   constructor(
@@ -71,6 +72,9 @@ export class UserServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<PrismaUser> {
     return this.prisma.user.delete(args);
+  }
+  async CreateUserRest(args: UserCreateInput): Promise<UserUpdateInput> {
+    throw new Error("Not implemented");
   }
   async Login(args: string): Promise<string> {
     throw new Error("Not implemented");
