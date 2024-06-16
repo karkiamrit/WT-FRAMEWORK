@@ -20,6 +20,7 @@ import { SensorDataFindUniqueArgs } from "./SensorDataFindUniqueArgs";
 import { CreateSensorDataArgs } from "./CreateSensorDataArgs";
 import { UpdateSensorDataArgs } from "./UpdateSensorDataArgs";
 import { DeleteSensorDataArgs } from "./DeleteSensorDataArgs";
+import { SensorDataWhereUniqueInput } from "./SensorDataWhereUniqueInput";
 import { SensorDataService } from "../sensorData.service";
 @graphql.Resolver(() => SensorData)
 export class SensorDataResolverBase {
@@ -111,5 +112,13 @@ export class SensorDataResolverBase {
     args: SensorData
   ): Promise<SensorData[]> {
     return this.service.GetSensorData(args);
+  }
+
+  @graphql.Mutation(() => SensorDataWhereUniqueInput)
+  async RestCreateSensorData(
+    @graphql.Args()
+    args: SensorDataFindUniqueArgs
+  ): Promise<SensorDataWhereUniqueInput> {
+    return this.service.RestCreateSensorData(args);
   }
 }

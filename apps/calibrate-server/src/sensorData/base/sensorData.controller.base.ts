@@ -22,6 +22,7 @@ import { SensorData } from "./SensorData";
 import { SensorDataFindManyArgs } from "./SensorDataFindManyArgs";
 import { SensorDataWhereUniqueInput } from "./SensorDataWhereUniqueInput";
 import { SensorDataUpdateInput } from "./SensorDataUpdateInput";
+import { SensorDataFindUniqueArgs } from "./SensorDataFindUniqueArgs";
 
 export class SensorDataControllerBase {
   constructor(protected readonly service: SensorDataService) {}
@@ -161,7 +162,7 @@ export class SensorDataControllerBase {
   })
   async FetchSensorData(
     @common.Body()
-    body: SensorData
+    body: SensorDataFindUniqueArgs
   ): Promise<SensorData[]> {
     return this.service.FetchSensorData(body);
   }
@@ -178,8 +179,25 @@ export class SensorDataControllerBase {
   })
   async GetSensorData(
     @common.Body()
-    body: SensorData
+    body: SensorDataFindUniqueArgs
   ): Promise<SensorData[]> {
     return this.service.GetSensorData(body);
+  }
+
+  @common.Post("/create-sensor-data")
+  @swagger.ApiOkResponse({
+    type: SensorDataWhereUniqueInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async RestCreateSensorData(
+    @common.Body()
+    body: SensorDataFindUniqueArgs
+  ): Promise<SensorDataWhereUniqueInput> {
+    return this.service.RestCreateSensorData(body);
   }
 }

@@ -11,6 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Position as PrismaPosition } from "@prisma/client";
+import { PositionUpdateInput } from "./PositionUpdateInput";
+import { PositionWhereUniqueInput } from "./PositionWhereUniqueInput";
 
 export class PositionServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,6 +47,11 @@ export class PositionServiceBase {
     return this.prisma.position.delete(args);
   }
   async CreatePosition(args: string): Promise<string> {
+    throw new Error("Not implemented");
+  }
+  async RestCreatePosition(
+    args: PositionUpdateInput
+  ): Promise<PositionWhereUniqueInput> {
     throw new Error("Not implemented");
   }
 }
