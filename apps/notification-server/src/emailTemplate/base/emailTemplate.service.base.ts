@@ -49,6 +49,9 @@ export class EmailTemplateServiceBase {
   ): Promise<PrismaEmailTemplate> {
     return this.prisma.emailTemplate.delete(args);
   }
+  async EmailNotify(args: EmailTemplate): Promise<EmailTemplate> {
+    throw new Error("Not implemented");
+  }
   async SendEmailNotification(args: EmailTemplate): Promise<EmailTemplate> {
     throw new Error("Not implemented");
   }

@@ -98,6 +98,14 @@ export class EmailTemplateResolverBase {
   }
 
   @graphql.Mutation(() => EmailTemplate)
+  async EmailNotify(
+    @graphql.Args()
+    args: EmailTemplate
+  ): Promise<EmailTemplate> {
+    return this.service.EmailNotify(args);
+  }
+
+  @graphql.Mutation(() => EmailTemplate)
   async SendEmailNotification(
     @graphql.Args()
     args: EmailTemplate
