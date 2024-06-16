@@ -20,6 +20,8 @@ import { PositionFindUniqueArgs } from "./PositionFindUniqueArgs";
 import { CreatePositionArgs } from "./CreatePositionArgs";
 import { UpdatePositionArgs } from "./UpdatePositionArgs";
 import { DeletePositionArgs } from "./DeletePositionArgs";
+import { PositionUpdateInput } from "./PositionUpdateInput";
+import { PositionWhereUniqueInput } from "./PositionWhereUniqueInput";
 import { PositionService } from "../position.service";
 @graphql.Resolver(() => Position)
 export class PositionResolverBase {
@@ -103,5 +105,13 @@ export class PositionResolverBase {
     args: string
   ): Promise<string> {
     return this.service.CreatePosition(args);
+  }
+
+  @graphql.Mutation(() => PositionWhereUniqueInput)
+  async RestCreatePosition(
+    @graphql.Args()
+    args: PositionUpdateInput
+  ): Promise<PositionWhereUniqueInput> {
+    return this.service.RestCreatePosition(args);
   }
 }

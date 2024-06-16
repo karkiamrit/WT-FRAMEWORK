@@ -147,6 +147,23 @@ export class RouteControllerBase {
     }
   }
 
+  @common.Post("/add-route")
+  @swagger.ApiOkResponse({
+    type: Route,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async AddRoute(
+    @common.Body()
+    body: Route
+  ): Promise<Route> {
+    return this.service.AddRoute(body);
+  }
+
   @common.Post("/route")
   @swagger.ApiOkResponse({
     type: Route,

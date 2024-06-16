@@ -161,8 +161,25 @@ export class PositionControllerBase {
   })
   async CreatePosition(
     @common.Body()
-    body: string
+    body: PositionUpdateInput
   ): Promise<string> {
     return this.service.CreatePosition(body);
+  }
+
+  @common.Post("/create-position")
+  @swagger.ApiOkResponse({
+    type: PositionWhereUniqueInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async RestCreatePosition(
+    @common.Body()
+    body: PositionUpdateInput
+  ): Promise<PositionWhereUniqueInput> {
+    return this.service.RestCreatePosition(body);
   }
 }
