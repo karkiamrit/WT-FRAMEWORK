@@ -26,6 +26,8 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
+import { UserOrderByInput } from "./UserOrderByInput";
 import { UserCreateInput } from "./UserCreateInput";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -139,6 +141,22 @@ export class UserResolverBase {
     args: string
   ): Promise<string> {
     return this.service.Login(args);
+  }
+
+  @graphql.Mutation(() => UserOrderByInput)
+  async RestCreateUser(
+    @graphql.Args()
+    args: UserWhereUniqueInput
+  ): Promise<UserOrderByInput> {
+    return this.service.RestCreateUser(args);
+  }
+
+  @graphql.Mutation(() => UserCreateInput)
+  async SignIn(
+    @graphql.Args()
+    args: UserCreateInput
+  ): Promise<UserCreateInput> {
+    return this.service.SignIn(args);
   }
 
   @graphql.Mutation(() => UserCreateInput)
