@@ -94,6 +94,14 @@ export class RouteResolverBase {
   }
 
   @graphql.Mutation(() => Route)
+  async AddRoute(
+    @graphql.Args()
+    args: Route
+  ): Promise<Route> {
+    return this.service.AddRoute(args);
+  }
+
+  @graphql.Mutation(() => Route)
   async CreateRoute(
     @graphql.Args()
     args: Route

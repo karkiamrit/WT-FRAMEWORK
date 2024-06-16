@@ -98,6 +98,14 @@ export class SensorDataResolverBase {
   }
 
   @graphql.Query(() => [SensorData])
+  async FetchSensorData(
+    @graphql.Args()
+    args: SensorData
+  ): Promise<SensorData[]> {
+    return this.service.FetchSensorData(args);
+  }
+
+  @graphql.Query(() => [SensorData])
   async GetSensorData(
     @graphql.Args()
     args: SensorData

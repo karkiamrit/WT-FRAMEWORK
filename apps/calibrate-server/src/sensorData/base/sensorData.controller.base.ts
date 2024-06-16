@@ -159,6 +159,23 @@ export class SensorDataControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  async FetchSensorData(
+    @common.Body()
+    body: SensorData
+  ): Promise<SensorData[]> {
+    return this.service.FetchSensorData(body);
+  }
+
+  @common.Get("/sensor-data")
+  @swagger.ApiOkResponse({
+    type: SensorData,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
   async GetSensorData(
     @common.Body()
     body: SensorData

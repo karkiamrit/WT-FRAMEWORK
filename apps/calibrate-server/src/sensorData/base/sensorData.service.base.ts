@@ -47,6 +47,9 @@ export class SensorDataServiceBase {
   ): Promise<PrismaSensorData> {
     return this.prisma.sensorData.delete(args);
   }
+  async FetchSensorData(args: SensorData): Promise<SensorData[]> {
+    throw new Error("Not implemented");
+  }
   async GetSensorData(args: SensorData): Promise<SensorData[]> {
     throw new Error("Not implemented");
   }

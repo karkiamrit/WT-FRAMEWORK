@@ -45,6 +45,9 @@ export class RouteServiceBase {
   ): Promise<PrismaRoute> {
     return this.prisma.route.delete(args);
   }
+  async AddRoute(args: Route): Promise<Route> {
+    throw new Error("Not implemented");
+  }
   async CreateRoute(args: Route): Promise<Route> {
     throw new Error("Not implemented");
   }
