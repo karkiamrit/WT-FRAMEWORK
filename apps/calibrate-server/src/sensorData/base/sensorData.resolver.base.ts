@@ -20,6 +20,8 @@ import { SensorDataFindUniqueArgs } from "./SensorDataFindUniqueArgs";
 import { CreateSensorDataArgs } from "./CreateSensorDataArgs";
 import { UpdateSensorDataArgs } from "./UpdateSensorDataArgs";
 import { DeleteSensorDataArgs } from "./DeleteSensorDataArgs";
+import { SensorDataCreateInput } from "./SensorDataCreateInput";
+import { SensorDataUpdateInput } from "./SensorDataUpdateInput";
 import { SensorDataWhereUniqueInput } from "./SensorDataWhereUniqueInput";
 import { SensorDataService } from "../sensorData.service";
 @graphql.Resolver(() => SensorData)
@@ -96,6 +98,14 @@ export class SensorDataResolverBase {
       }
       throw error;
     }
+  }
+
+  @graphql.Mutation(() => SensorDataUpdateInput)
+  async CreateSensorDataRest(
+    @graphql.Args()
+    args: SensorDataCreateInput
+  ): Promise<SensorDataUpdateInput> {
+    return this.service.CreateSensorDataRest(args);
   }
 
   @graphql.Query(() => [SensorData])

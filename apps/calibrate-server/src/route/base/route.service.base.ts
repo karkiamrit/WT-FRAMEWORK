@@ -12,6 +12,8 @@ https://docs.amplication.com/how-to/custom-code
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Route as PrismaRoute } from "@prisma/client";
 import { Route } from "./Route";
+import { RouteCreateInput } from "./RouteCreateInput";
+import { RouteUpdateInput } from "./RouteUpdateInput";
 
 export class RouteServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -49,6 +51,9 @@ export class RouteServiceBase {
     throw new Error("Not implemented");
   }
   async CreateRoute(args: Route): Promise<Route> {
+    throw new Error("Not implemented");
+  }
+  async CreateRouteRest(args: RouteCreateInput): Promise<RouteUpdateInput> {
     throw new Error("Not implemented");
   }
 }

@@ -11,6 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, SensorData as PrismaSensorData } from "@prisma/client";
+import { SensorDataCreateInput } from "./SensorDataCreateInput";
+import { SensorDataUpdateInput } from "./SensorDataUpdateInput";
 import { SensorData } from "./SensorData";
 import { SensorDataFindUniqueArgs } from "./SensorDataFindUniqueArgs";
 import { SensorDataWhereUniqueInput } from "./SensorDataWhereUniqueInput";
@@ -48,6 +50,11 @@ export class SensorDataServiceBase {
     args: Prisma.SelectSubset<T, Prisma.SensorDataDeleteArgs>
   ): Promise<PrismaSensorData> {
     return this.prisma.sensorData.delete(args);
+  }
+  async CreateSensorDataRest(
+    args: SensorDataCreateInput
+  ): Promise<SensorDataUpdateInput> {
+    throw new Error("Not implemented");
   }
   async FetchSensorData(args: SensorData): Promise<SensorData[]> {
     throw new Error("Not implemented");

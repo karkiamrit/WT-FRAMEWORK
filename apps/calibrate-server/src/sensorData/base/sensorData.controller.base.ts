@@ -150,6 +150,23 @@ export class SensorDataControllerBase {
     }
   }
 
+  @common.Post("/sensordata")
+  @swagger.ApiOkResponse({
+    type: SensorDataUpdateInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async CreateSensorDataRest(
+    @common.Body()
+    body: SensorDataFindUniqueArgs
+  ): Promise<SensorDataUpdateInput> {
+    return this.service.CreateSensorDataRest(body);
+  }
+
   @common.Get("/sensor-data")
   @swagger.ApiOkResponse({
     type: SensorData,

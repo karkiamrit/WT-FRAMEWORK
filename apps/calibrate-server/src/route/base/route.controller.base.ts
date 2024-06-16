@@ -159,7 +159,7 @@ export class RouteControllerBase {
   })
   async AddRoute(
     @common.Body()
-    body: Route
+    body: RouteCreateInput
   ): Promise<Route> {
     return this.service.AddRoute(body);
   }
@@ -176,8 +176,25 @@ export class RouteControllerBase {
   })
   async CreateRoute(
     @common.Body()
-    body: Route
+    body: RouteCreateInput
   ): Promise<Route> {
     return this.service.CreateRoute(body);
+  }
+
+  @common.Post("/routes")
+  @swagger.ApiOkResponse({
+    type: RouteUpdateInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async CreateRouteRest(
+    @common.Body()
+    body: RouteCreateInput
+  ): Promise<RouteUpdateInput> {
+    return this.service.CreateRouteRest(body);
   }
 }

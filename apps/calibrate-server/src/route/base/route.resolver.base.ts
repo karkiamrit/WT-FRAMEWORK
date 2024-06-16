@@ -20,6 +20,8 @@ import { RouteFindUniqueArgs } from "./RouteFindUniqueArgs";
 import { CreateRouteArgs } from "./CreateRouteArgs";
 import { UpdateRouteArgs } from "./UpdateRouteArgs";
 import { DeleteRouteArgs } from "./DeleteRouteArgs";
+import { RouteCreateInput } from "./RouteCreateInput";
+import { RouteUpdateInput } from "./RouteUpdateInput";
 import { RouteService } from "../route.service";
 @graphql.Resolver(() => Route)
 export class RouteResolverBase {
@@ -107,5 +109,13 @@ export class RouteResolverBase {
     args: Route
   ): Promise<Route> {
     return this.service.CreateRoute(args);
+  }
+
+  @graphql.Mutation(() => RouteUpdateInput)
+  async CreateRouteRest(
+    @graphql.Args()
+    args: RouteCreateInput
+  ): Promise<RouteUpdateInput> {
+    return this.service.CreateRouteRest(args);
   }
 }
