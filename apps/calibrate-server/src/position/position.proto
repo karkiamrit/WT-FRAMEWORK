@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package position;
+service PositionService {
+ rpc createPosition (PositionCreateInput) returns (Position) {}
+rpc positions (findManyParams) returns (stream Position) {}
+rpc position (PositionWhereUniqueInput) returns (Position) {}
+rpc updatePosition (PositionUpdateInput) returns (Position) {}
+rpc deletePosition (PositionWhereUniqueInput) returns (Position) {} 
+ }
+message PositionCreateInput {
+int32 altitude = 1;
+string createdAt = 2;
+string id = 3;
+int32 latitude = 4;
+int32 longitude = 5;
+string timestamp = 6;
+string updatedAt = 7;
+};
+message Position {
+int32 altitude = 1;
+string createdAt = 2;
+string id = 3;
+int32 latitude = 4;
+int32 longitude = 5;
+string timestamp = 6;
+string updatedAt = 7;
+};
+message PositionWhereUniqueInput {
+int32 altitude = 1;
+string createdAt = 2;
+string id = 3;
+int32 latitude = 4;
+int32 longitude = 5;
+string timestamp = 6;
+string updatedAt = 7;
+};
+message PositionUpdateInput {
+int32 altitude = 1;
+string createdAt = 2;
+string id = 3;
+int32 latitude = 4;
+int32 longitude = 5;
+string timestamp = 6;
+string updatedAt = 7;
+};
+message findManyParams {
+
+};

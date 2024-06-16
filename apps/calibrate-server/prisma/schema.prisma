@@ -1,0 +1,42 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Position {
+  altitude  Float?
+  createdAt DateTime  @default(now())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  latitude  Float?
+  longitude Float?
+  timestamp DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model Route {
+  complete  Boolean?
+  createdAt DateTime @default(now())
+  finish    String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  owner     String?
+  start     String?
+  updatedAt DateTime @updatedAt
+}
+
+model SensorData {
+  createdAt   DateTime           @default(now())
+  deviceOwner String?
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  key         EnumSensorDataKey?
+  timestamp   DateTime?
+  updatedAt   DateTime           @updatedAt
+  value       Float?
+}
+
+enum EnumSensorDataKey {
+  Option1
+}
