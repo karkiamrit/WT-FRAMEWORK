@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package route;
+service RouteService {
+ rpc createRoute (RouteCreateInput) returns (Route) {}
+rpc routes (findManyParams) returns (stream Route) {}
+rpc route (RouteWhereUniqueInput) returns (Route) {}
+rpc updateRoute (RouteUpdateInput) returns (Route) {}
+rpc deleteRoute (RouteWhereUniqueInput) returns (Route) {} 
+ }
+message RouteCreateInput {
+bool complete = 1;
+string createdAt = 2;
+string finish = 3;
+string id = 4;
+string owner = 5;
+string start = 6;
+string updatedAt = 7;
+};
+message Route {
+bool complete = 1;
+string createdAt = 2;
+string finish = 3;
+string id = 4;
+string owner = 5;
+string start = 6;
+string updatedAt = 7;
+};
+message RouteWhereUniqueInput {
+bool complete = 1;
+string createdAt = 2;
+string finish = 3;
+string id = 4;
+string owner = 5;
+string start = 6;
+string updatedAt = 7;
+};
+message RouteUpdateInput {
+bool complete = 1;
+string createdAt = 2;
+string finish = 3;
+string id = 4;
+string owner = 5;
+string start = 6;
+string updatedAt = 7;
+};
+message findManyParams {
+
+};
