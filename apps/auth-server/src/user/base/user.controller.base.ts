@@ -26,6 +26,7 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { UserOrderByInput } from "./UserOrderByInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -235,6 +236,23 @@ export class UserControllerBase {
     body: UserCreateInput
   ): Promise<string> {
     return this.service.Login(body);
+  }
+
+  @common.Post("/create-user")
+  @swagger.ApiOkResponse({
+    type: UserOrderByInput,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async RestCreateUser(
+    @common.Body()
+    body: UserCreateInput
+  ): Promise<UserOrderByInput> {
+    return this.service.RestCreateUser(body);
   }
 
   @common.Post("/sign-in")
