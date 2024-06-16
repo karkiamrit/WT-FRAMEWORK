@@ -108,6 +108,14 @@ export class PositionResolverBase {
   }
 
   @graphql.Mutation(() => PositionWhereUniqueInput)
+  async CreatePositionRest(
+    @graphql.Args()
+    args: PositionUpdateInput
+  ): Promise<PositionWhereUniqueInput> {
+    return this.service.CreatePositionRest(args);
+  }
+
+  @graphql.Mutation(() => PositionWhereUniqueInput)
   async RestCreatePosition(
     @graphql.Args()
     args: PositionUpdateInput

@@ -49,6 +49,11 @@ export class PositionServiceBase {
   async CreatePosition(args: string): Promise<string> {
     throw new Error("Not implemented");
   }
+  async CreatePositionRest(
+    args: PositionUpdateInput
+  ): Promise<PositionWhereUniqueInput> {
+    throw new Error("Not implemented");
+  }
   async RestCreatePosition(
     args: PositionUpdateInput
   ): Promise<PositionWhereUniqueInput> {
